@@ -35,14 +35,16 @@ function App() {
   }, [fetchStats]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen gradient-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-2xl p-6 transition-all duration-300">
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                <Github className="h-8 w-8" />
-                GitHub Activity Dashboard
+              <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2 group">
+                <Github className="h-8 w-8 transition-transform group-hover:rotate-12" />
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  GitHub Activity Dashboard
+                </span>
               </h1>
               <SearchBar
                 owner={owner}
@@ -61,7 +63,17 @@ function App() {
               />
             )}
 
-            {stats && (
+            {loading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[...Array(4)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="animate-pulse bg-gray-200 h-32 rounded-xl shadow-md"
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  />
+                ))}
+              </div>
+            ) : stats && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatsCard
                   title="Commits"

@@ -1,0 +1,22 @@
+{
+    "name": "GitHub Activity Dashboard",
+    "image": "mcr.microsoft.com/devcontainers/go:1.21",
+    "features": {
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "20"
+      }
+    },
+    "forwardPorts": [8080, 5173],
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "golang.go",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "bradlc.vscode-tailwindcss"
+        ]
+      }
+    },
+    "postCreateCommand": "cd backend && go mod download && cd ../frontend && npm install",
+    "remoteUser": "vscode"
+  }
