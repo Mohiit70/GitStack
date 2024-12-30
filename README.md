@@ -1,50 +1,81 @@
-# React + TypeScript + Vite
+# Sample Go/React GitStack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time GitHub repository analytics dashboard built with Go and React. This sample demonstrates how to create a full-stack application using Daytona's development environment capabilities.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Open Using Daytona
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Install Daytona**: Follow the [Daytona installation guide](https://www.daytona.io/docs/installation/installation/).
 
-- Configure the top-level `parserOptions` property like this:
+2. **Create the Workspace**:
+   ```bash
+   daytona create https://github.com/yourusername/GitStack
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+3. **Set up GitHub Token**:
+   - Create a [GitHub Personal Access Token](https://github.com/settings/tokens)
+   - Add it to `backend/.env`:
+     ```bash
+     echo "GITHUB_TOKEN=your_token_here" > backend/.env
+     ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+4. **Start the Application**:
+   ```bash
+   # Terminal 1 - Start the backend
+   cd backend && go run main.go
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   # Terminal 2 - Start the frontend
+   cd frontend && npm run dev
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## ✨ Features
+
+- **Standardized Development Environment**: Consistent setup using devcontainers
+- **Full-Stack Application**: Go backend with React frontend
+- **Real-time Analytics**: Track GitHub repository metrics
+  - Commit history
+  - Pull requests
+  - Issues
+  - Contributors
+- **Repository Comparison**: Compare metrics between different repositories
+- **Modern UI**: Responsive design with dark mode and glassmorphism effects
+- **Data Visualization**: Interactive charts using Recharts
+- **Type Safety**: Full TypeScript support
+- **Development Tools**:
+  - Hot reloading
+  - ESLint configuration
+  - Prettier formatting
+  - Go debugging support
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**:
+  - Go 1.21
+  - GitHub API v3
+  - godotenv for configuration
+
+- **Frontend**:
+  - React 18
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+  - Recharts for data visualization
+  - Lucide Icons
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
